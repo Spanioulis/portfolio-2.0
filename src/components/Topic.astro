@@ -1,0 +1,47 @@
+---
+import topics from "../content/topics.json";
+console.log(topics);
+---
+
+{
+	topics.topics.map((topic) => (
+		<li>
+			<a
+				class="topic"
+				href={topic.link}
+				target="_blank"
+				aria-label={`Obtén más información sobre ${topic.name}`}
+			>
+				<svg>
+					<use xlink:href={`/src/icons/technologies.svg#${topic.icon}`} />
+				</svg>
+			</a>
+		</li>
+	))
+}
+
+<style>
+	li {
+		--size: 100px;
+		width: var(--size);
+		height: calc(var(--size) * 1.25);
+		border: 0 solid rgba(230, 224, 224, 0.067);
+		place-items: center;
+		transition: filter 0.5s;
+		display: inline-grid;
+	}
+
+	svg {
+		fill: hsl(var(--accent-light));
+		width: calc(var(--size) * 1);
+		opacity: 0.7;
+		transition:
+			scale 0.2s,
+			opacity 0.15s;
+
+		&:hover {
+			opacity: 1;
+			scale: 1.15;
+		}
+	}
+</style>
